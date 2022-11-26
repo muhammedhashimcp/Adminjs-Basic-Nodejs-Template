@@ -15,7 +15,26 @@ const admin = new AdminJS({
 	resources: [
 		{
 			resource: User,
+
 			options: {
+				// user details custom Action
+				actions: {
+					Details: {
+						actionType: 'record',
+						component: false,
+						handler: (request, response, context) => {
+							const { record } = context;
+							return {
+								
+								msg: 'Hello world',
+							};
+						},
+					},
+				},
+				sort: {
+					sortBy: 'user_status',
+					direction: 'desc',
+				},
 				navigation: usersNavigation,
 				id: 'profiles', // here the resource identifier has been renamed to "profiles"
 				properties: {
@@ -28,17 +47,23 @@ const admin = new AdminJS({
 						},
 					},
 					user_status: {
-						isVisible: { 
+						isVisible: {
 							edit: false,
 							show: true,
 							list: false,
 						},
 					},
 				},
-				listProperties: ['_id', 'uid', 'email', 'user_status','  user_profile'],
-				filterProperties: ['_id', 'email','user_status', 'uid'],
+				listProperties: [
+					'_id',
+					'uid',
+					'email',
+					'user_status',
+					'  user_profile',
+				],
+				filterProperties: ['_id', 'email', 'user_status', 'uid'],
 				// editProperties: ['_id', 'name', 'bio', 'createdAt'],
-				
+
 				href: ({ h, resource }) => {
 					return h.resourceActionUrl({
 						resourceId: resource.decorate().id(),
