@@ -3,15 +3,16 @@ const AdminJS = require('adminjs');
 const AdminJsMongoose = require('@adminjs/mongoose');
 AdminJS.registerAdapter(AdminJsMongoose);
 const User = require('../models/signup')
-// config / dataBase.js;
-// views / admin.options.js;
-// const connectDb = require('../config/dataBase');
 const admin = new AdminJS({
+	// show data from all collections 
 	databases: [mongoose],
+	// show data from particular collections
 	resources: [
 		{
 			resource: User,
+			// options for collection
 			options: {
+				// config particular field (property) from collection
 				properties: {
 					user_profile: {
 						isVisible: {
