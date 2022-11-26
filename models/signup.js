@@ -7,7 +7,7 @@ const signupModal = mongoose.Schema({
   isDeleted: { type: Boolean, default: false },
   user_status: { type: String, default: "Pending" },
   user_type: { type: String, default: "demo" },
-});
+}); 
 
-const Signup = mongoose.model("user_data", signupModal);
+const Signup = mongoose.model('sample-user-data', signupModal);
 module.exports = Signup;

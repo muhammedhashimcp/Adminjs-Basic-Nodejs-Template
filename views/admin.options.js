@@ -3,11 +3,53 @@ const AdminJS = require('adminjs');
 const AdminJsMongoose = require('@adminjs/mongoose');
 AdminJS.registerAdapter(AdminJsMongoose);
 const User = require('../models/signup')
+const usersNavigation = {
+	name: 'Users',
+	icon: 'User',
+};
 const admin = new AdminJS({
-	// show data from all collections 
+	// show data from all collections
 	databases: [mongoose],
 	// show data from particular collections
+
 	resources: [
+		{
+			resource: User,
+			options: {
+				navigation: usersNavigation,
+				id: 'profiles', // here the resource identifier has been renamed to "profiles"
+				properties: {
+					user_type: {
+						isVisible: {
+							edit: true,
+							show: true,
+							list: false,
+							filter: false,
+						},
+					},
+					user_status: {
+						isVisible: { 
+							edit: false,
+							show: true,
+							list: false,
+						},
+					},
+				},
+				listProperties: ['_id', 'uid', 'email', 'user_status','  user_profile'],
+				filterProperties: ['_id', 'email','user_status', 'uid'],
+				// editProperties: ['_id', 'name', 'bio', 'createdAt'],
+				
+				href: ({ h, resource }) => {
+					return h.resourceActionUrl({
+						resourceId: resource.decorate().id(),
+						actionName: 'list',
+						params: {
+							'filters.user_status': 'demo',
+						},
+					});
+				},
+			},
+		},
 		{
 			resource: User,
 			// options for collection
