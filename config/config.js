@@ -1,5 +1,2 @@
-const MONGO_URL =process.env.MONGO_URL
-module.exports = {
-    MONGO_URL,
-    
-} 
+export const  MONGO_URL =process.env.MONGO_URL
+// export default MONGO_URL;

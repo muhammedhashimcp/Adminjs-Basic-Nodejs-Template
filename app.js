@@ -1,13 +1,14 @@
-const express = require('express');
-const PORT = 3000;
-require('dotenv').config();
+import express from 'express'
+const PORT = 4000;
+import dotenv from 'dotenv'
+dotenv.config();
 // our config
 const app = express();
-const adminRouter = require('./routes/admin.router');
+import {adminRouter} from './routes/admin.router.js'  
 //requiring data base config
-const db = require('./config/dataBase');
-db();
-
+import db from './config/dataBase.js'
+db(); 
+ 
 // Endpoint  for admin
 app.use('/admin', adminRouter);
 app.listen(PORT, () => {

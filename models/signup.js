@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 const signupModal = mongoose.Schema({
 	email: String,
@@ -9,5 +9,4 @@ const signupModal = mongoose.Schema({
 	user_type: { type: String, default: 'demo' },
 });
 
-const Signup = mongoose.model('sample-user-data', signupModal);
-module.exports = Signup;
+export const Signup = mongoose.model('sample-user-data', signupModal);

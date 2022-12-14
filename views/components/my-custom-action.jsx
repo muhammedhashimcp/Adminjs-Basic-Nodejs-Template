@@ -2,8 +2,8 @@ import React from 'react';
 import { Box, H3 } from '@adminjs/design-system';
 import { ActionProps } from 'adminjs';
 
-const MyCustomAction = (props: ActionProps) => {
-	const { record } = props;
+const MyCustomAction = (ActionProps) => {
+	const { record } = ActionProps;
 
 	return (
 		<Box flex>

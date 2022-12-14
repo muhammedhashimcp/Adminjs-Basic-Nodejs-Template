@@ -1,8 +1,8 @@
-const { model } = require('mongoose')
+import { model }from 'mongoose'
 
 const User = model('User', {
   name: String,
   email: String,
 })
 
-module.exports = User
+module.exports = User 

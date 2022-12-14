@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
-const AdminJS = require('adminjs');
-const AdminJsMongoose = require('@adminjs/mongoose');
+import mongoose from 'mongoose'
+import AdminJS from 'adminjs'
+import AdminJsMongoose from '@adminjs/mongoose'
 AdminJS.registerAdapter(AdminJsMongoose);
-const User = require('../models/signup')
+import {Signup} from '../models/signup.js';
 const usersNavigation = {
 	name: 'Users',
 	icon: 'User',
 };
-const admin = new AdminJS({
+export const adminConfig = new AdminJS({
 	// show data from all collections
 	databases: [mongoose],
 	// show data from particular collections
 
 	resources: [
 		{
-			resource: User,
+			resource: Signup,
 
 			options: {
 				// user details custom Action
@@ -25,7 +25,6 @@ const admin = new AdminJS({
 						handler: (request, response, context) => {
 							const { record } = context;
 							return {
-								
 								msg: 'Hello world',
 							};
 						},
@@ -76,7 +75,7 @@ const admin = new AdminJS({
 			},
 		},
 		{
-			resource: User,
+			resource: Signup,
 			// options for collection
 			options: {
 				// config particular field (property) from collection
@@ -132,4 +131,4 @@ const admin = new AdminJS({
 	rootPath: '/admin',
 });
 
-module.exports = admin;
+// module.exports = admin;
