@@ -4,9 +4,9 @@ import dotenv from 'dotenv'
 dotenv.config();
 // our config
 const app = express();
-import {adminRouter} from './routes/admin.router.js'  
+import adminRouter from './src/admin.options.js'  
 //requiring data base config
-import db from './config/dataBase.js'
+import db from './config/dataBase.js' 
 db(); 
  
 // Endpoint  for admin
